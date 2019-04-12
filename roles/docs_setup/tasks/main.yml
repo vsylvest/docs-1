@@ -99,3 +99,14 @@
     name: workshop
     target: /tmp/workshop.sql
   when: workshopsql.changed
+
+
+- name: reload nginx
+  service:
+    name: nginx
+    state: reloaded
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
