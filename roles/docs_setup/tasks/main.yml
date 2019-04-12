@@ -16,6 +16,12 @@
     enablerepo: remi-php72
   notify: restart nginx
   
+  - name: Install the Python MySQLB module
+    pip: name=MySQL-python
+
+  - name: Create the flask database
+    mysql_db: name=flask_db state=present
+  
 - name: Start Services
   service:
     name: "{{ item }}"
