@@ -1,0 +1,8 @@
+---
+- name: Install Docs Server
+  hosts:
+    tag_Name_rhel
+  roles:
+    - linux-common
+    - docs-nginx
+    - docs-setup
