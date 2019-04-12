@@ -16,6 +16,9 @@
     enablerepo: remi-php72
   notify: restart nginx
 
+- name: install python sql
+  command: sudo pip install MySQL-python
+  
 - name: Start Services
   service:
     name: "{{ item }}"
