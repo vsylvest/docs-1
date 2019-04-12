@@ -3,6 +3,6 @@
   hosts:
     tag_Name_rhel
   roles:
-    - linux-common
-    - docs-nginx
-    - docs-setup
+    - { role: linux-common }
+    - { role: docs-nginx }
+    - { role: docs-setup }
