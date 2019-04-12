@@ -60,6 +60,7 @@
   copy:
     src: templates/index.php.j2
     dest: /usr/share/nginx/html/index.php
+  tags: update
 
 
 #- name: Install asciidoctor-pdf Gem
@@ -105,8 +106,11 @@
   service:
     name: nginx
     state: reloaded
+  tags: update
+
 
 - name: restart nginx
   service:
     name: nginx
     state: restarted
+  tags: update
