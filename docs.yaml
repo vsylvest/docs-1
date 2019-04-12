@@ -2,6 +2,7 @@
 - name: Install Docs Server
   hosts:
     tag_Name_rhel
+  gather_facts: no
   roles:
     - { role: linux-common }
     - { role: docs_nginx }
