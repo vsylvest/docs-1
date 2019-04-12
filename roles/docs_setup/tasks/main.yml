@@ -80,7 +80,7 @@
 
 - name: Install PyMySQL
   pip:
-    name: MySQLdb
+    name: MySQL-python
     
 - name: Create a new database with name 'workshop'
   mysql_db:
