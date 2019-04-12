@@ -87,12 +87,14 @@
   mysql_db:
     name: workshop
     state: present
+  tags: update
 
 - name: Copy SQL template to server
   template:
     src: templates/workshop.sql.j2
     dest: /tmp/workshop.sql
   register: workshopsql
+  tags: update
   
 - name: Import SQL file into workshop database
   mysql_db:
@@ -100,6 +102,7 @@
     name: workshop
     target: /tmp/workshop.sql
   when: workshopsql.changed
+  tags: update
 
 
 - name: reload nginx
