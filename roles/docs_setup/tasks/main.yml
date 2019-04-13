@@ -12,6 +12,10 @@
       - php-pdo
       - python-pip
       - git
+      - mysql-devel
+      - python-devel
+      - python-setuptools
+      - gcc
     state: present
     enablerepo: remi-php72
   notify: restart nginx
@@ -79,7 +83,7 @@
   pip:
     name: PyMySQL
 
-- name: Install PyMySQL
+- name: Install MySQL-python
   pip:
     name: MySQL-python
     
