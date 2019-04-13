@@ -42,14 +42,6 @@
     enablerepo: rhui-REGION-rhel-server-optional
 #  when: ansible_distribution == 'RedHat'
 
-- name: Install asciidoc packages (CentOS)
-  yum:
-    name:
-      - asciidoc
-      - rubygem-asciidoctor
-    state: present
-  when: ansible_distribution == 'CentOS'
-
 
 - name: Create users directory on server
   file:
