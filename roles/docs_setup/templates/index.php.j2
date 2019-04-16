@@ -43,11 +43,11 @@ if (!isset($_SESSION['email'])) {
 				$id = db_fetch_cell("SELECT id FROM `users` WHERE email = '' LIMIT 1", 'id');
 				if (!$id) {
 					display_header();
-		      db_execute_prepare('UPDATE `users` set name=?, email=?, company=?, workshop=? WHERE id = ?', array(sql_clean_username($_POST['name']), sql_clean_username($_POST['email']),sql_clean_username($_POST['company']),sql_clean_username($_POST['workshop']), $id));
+		      	    db_execute_prepare('UPDATE `users` set name=?, email=?, company=?, workshop=? WHERE id = ?', array(sql_clean_username($_POST['name']), sql_clean_username($_POST['email']),sql_clean_username($_POST['company']),sql_clean_username($_POST['workshop']), $id));
 					$_SESSION['email'] = $_POST['email'];
 					$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
 				} else {
-					display_header();
+					display_footer ();
 				}
 			} else {
 				$_SESSION['email'] = $_POST['email'];
