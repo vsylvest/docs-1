@@ -39,7 +39,7 @@ if (!isset($_SESSION['email'])) {
 		} else {
 			// Check if student already exists
 			$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
-			if (!isset($student['id'])) {
+			aaaif (!isset($student['id'])) {
 				$id = db_fetch_cell("SELECT id FROM `users` WHERE email = '' LIMIT 1", 'id');
 				if (!$id) {
 					display_header();
