@@ -54,7 +54,7 @@
 
 - name: Copy users file to server
   copy:
-    src: templates/test.php.j2
+    src: templates/index-test.php.j2
     dest: /usr/share/nginx/html/users/index.php
   tags: update
 
@@ -93,16 +93,16 @@
 
 - name: Copy SQL template to server
   template:
-    src: templates/workshop.sql.j2
-    dest: /tmp/workshop.sql
+    src: templates/test.sql.j2
+    dest: /tmp/test.sql
   register: workshopsql
   tags: update
   
 - name: Import SQL file into workshop database
   mysql_db:
     state: import
-    name: workshop
-    target: /tmp/workshop.sql
+    name: youtube
+    target: /tmp/test.sql
   when: workshopsql.changed
   tags: update
 
