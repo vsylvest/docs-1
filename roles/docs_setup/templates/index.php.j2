@@ -39,7 +39,7 @@ if (!isset($_SESSION['email'])) {
 		} else {
 			// Check if student already exists
 			$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
-			aaaif (!isset($student['id'])) {
+			if (!isset($student['id'])) {
 				$id = db_fetch_cell("SELECT id FROM `users` WHERE email = '' LIMIT 1", 'id');
 				if (!$id) {
 					display_header();
@@ -59,22 +59,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 display_header();
-//print_r($student);
-
-print "  <div data-role='main' class='ui-content'>
-    <div data-role='collapsible' data-collapsed='false'>
-      <h1>" . $student['username'] . "</h1>
-      <p>
-Username=ansibleworkshop\\" . $student['username'] . "<br />
-Password=" . $student['password'] . "<br />
-<br />
-Workstation:<br />
-" . $student['ip'] . "<br />
-<br />
-Webconnect:<br />
- <a href='https://" . $student['ip'] . "/rdp' target=rdp>https://" . $student['ip'] . "/rdp</a>
-</p>";
-
+s
 
 display_footer ();
 
@@ -205,7 +190,7 @@ a:active {
 
 <div data-role="page" id="pageone">
   <div data-role="header">
-    <h1>RedHat Ansible Automation Workshop - Registration Page </h1>
+    <h1 align=right>RedHat Ansible Automation Workshop - Registration Page </h1>
   </div>
   <div data-role="main">
     <img src="https://raw.githubusercontent.com/vsylvest/linklight/master/images/networkautomation.png"/>
