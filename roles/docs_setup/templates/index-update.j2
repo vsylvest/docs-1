@@ -36,15 +36,19 @@ if (!isset($_SESSION['email'])) {
 			exit;
 		} else {
 			// Check if student already exists
+			print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>I am here 1</font>';
 			$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
 			if (!isset($student['id'])) {
+			print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>I am here 2</font>';
 				$id = db_fetch_cell("SELECT id FROM `users` WHERE email = '' LIMIT 1", 'id');
 				if (!$id) {
+				print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>I am here 3</font>';
 					display_header();
 					print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>Sorry, all available student accounts are taken.  Please let the instructor know.</font>';
 					display_footer ();
 					exit;
 				} else {
+				print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>I am here 4</font>';
 					db_execute_prepare('UPDATE `users` set name=?, email=? WHERE id = ?', array(sql_clean_username($_POST['name']), sql_clean_username($_POST['email']), $id));
 					$_SESSION['email'] = $_POST['email'];
 					$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
