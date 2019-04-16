@@ -1,9 +1,11 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(128) DEFAULT '',
   `email` varchar(128) DEFAULT '',
+  `id` int(12) NOT NULL DEFAULT '0',
+  `username` varchar(128) DEFAULT '',
+  `password` varchar(128) DEFAULT '',
   `company` varchar(500) DEFAULT '',
   `workshop` varchar(500) DEFAULT '',
-  `phone` varchar(10) DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
