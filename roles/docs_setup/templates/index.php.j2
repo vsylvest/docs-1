@@ -30,6 +30,7 @@ if (!isset($_SESSION['email'])) {
 	} else {
 		if (!isValidEmail($_POST['email'])) {
 			display_header();
+			console.log("Hello world!");
 			print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>Email is invalid</font>';
 			display_form();
 			display_footer ();
@@ -39,15 +40,10 @@ if (!isset($_SESSION['email'])) {
 			$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
 			if (!isset($student['id'])) {
 				$id = db_fetch_cell("SELECT id FROM `users` WHERE email = '' LIMIT 1", 'id');
-				if (!$id) {
-					display_header();
-					print '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>Sorry, all available student accounts are taken.  Please let the instructor know.</font>';
-					display_footer ();
-					exit;
-				} else {
-					db_execute_prepare('UPDATE `users` set name=?, email=?, company=?, workshop=? WHERE id = ?', array(sql_clean_username($_POST['name']), sql_clean_username($_POST['email']),sql_clean_username($_POST['company']),sql_clean_username($_POST['workshop']), $id));
-					$_SESSION['email'] = $_POST['email'];
-					$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
+				
+				db_execute_prepare('UPDATE `users` set name=?, email=?, company=?, workshop=? WHERE id = ?', array(sql_clean_username($_POST['name']), sql_clean_username($_POST['email']),sql_clean_username($_POST['company']),sql_clean_username($_POST['workshop']), $id));
+				$_SESSION['email'] = $_POST['email'];
+				$student = db_fetch_assoc_prepare("SELECT * FROM `users` WHERE email = ?", array($_POST['email']));
 				}
 			} else {
 				$_SESSION['email'] = $_POST['email'];
