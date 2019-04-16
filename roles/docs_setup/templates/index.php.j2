@@ -11,7 +11,8 @@ $mydb="workshop";
 try {
 	$db = new \PDO("mysql:host=$sql_server;port=$port;dbname=$mydb;charset=utf8", $sql_user, $sql_pass);
 } catch(PDOException $e) {
-	echo "Could not connect to the database\n";
+	//echo "Could not connect to the database\n";
+	error_log(‘Invalid input on user login’, 3, ‘/var/www/example.com/log/error.log’);
 	exit;
 }
 
@@ -29,6 +30,7 @@ if (!isset($_SESSION['email'])) {
 		display_footer ();
 		exit;
 	} else {
+	error_log(‘Invalid input on  login’, 3, ‘/var/www/example.com/log/error.log’);
 		if (!isValidEmail($_POST['email'])) {
 			display_header();
 			console.log("Hello world!");
