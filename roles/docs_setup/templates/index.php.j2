@@ -59,6 +59,21 @@ if (!isset($_SESSION['email'])) {
 }
 
 display_header();
+//print_r($student);
+
+print "  <div data-role='main' class='ui-content'>
+    <div data-role='collapsible' data-collapsed='false'>
+      <h1>" . $student['username'] . "</h1>
+      <p>
+Username=ansibleworkshop\\" . $student['username'] . "<br />
+Password=" . $student['password'] . "<br />
+<br />
+Workstation:<br />
+" . $student['ip'] . "<br />
+<br />
+Webconnect:<br />
+ <a href='https://" . $student['ip'] . "/rdp' target=rdp>https://" . $student['ip'] . "/rdp</a>
+</p>";
 
 
 display_footer ();
