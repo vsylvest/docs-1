@@ -54,8 +54,14 @@
 
 - name: Copy users file to server
   copy:
-    src: templates/index.php.j2
+    src: templates/index-test.j2
     dest: /usr/share/nginx/html/users/index.php
+  tags: update
+
+- name: Copy insert file to server
+  copy:
+    src: templates/insert.j2
+    dest: /usr/share/nginx/html/users/insert.php
   tags: update
 
 
