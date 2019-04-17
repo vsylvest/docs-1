@@ -54,7 +54,7 @@
 
 - name: Copy users file to server
   copy:
-    src: templates/index-test.j2
+    src: templates/index.php.j2
     dest: /usr/share/nginx/html/users/index.php
   tags: update
 
