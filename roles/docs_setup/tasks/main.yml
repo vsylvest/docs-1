@@ -47,7 +47,7 @@
 #  when: ansible_distribution == 'RedHat'
 
 
- - name: Create users directory on server
+- name: Create users directory on server
   file:
     path: /usr/share/nginx/html/register/
     state: directory
