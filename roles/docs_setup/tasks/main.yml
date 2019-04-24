@@ -103,7 +103,7 @@
     state: import
     name: ansibleworkshop
     target: /tmp/linklight.sql
-  when: workshopsql.changed
+  when: linklightsql.changed
   tags: sql
 
 
