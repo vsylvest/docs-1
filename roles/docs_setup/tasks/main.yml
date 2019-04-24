@@ -47,22 +47,22 @@
 #  when: ansible_distribution == 'RedHat'
 
 
-- name: Create users directory on server
-  file:
-    path: /usr/share/nginx/html/users/
-    state: directory
+# - name: Create users directory on server
+#  file:
+#    path: /usr/share/nginx/html/register/
+#    state: directory
 
-- name: Copy users file to server
-  copy:
-    src: templates/index.php.j2
-    dest: /usr/share/nginx/html/users/index.php
-  tags: update
+#- name: Copy users file to server
+#  copy:
+#    src: templates/index.php.j2
+#    dest: /usr/share/nginx/html/users/index.php
+#  tags: update
 
-- name: Copy insert file to server
-  copy:
-    src: templates/insert.j2
-    dest: /usr/share/nginx/html/users/insert.php
-  tags: update
+#- name: Copy insert file to server
+#  copy:
+#    src: templates/insert.j2
+#    dest: /usr/share/nginx/html/users/insert.php
+#  tags: update
 
 
 #- name: Install asciidoctor-pdf Gem
@@ -87,35 +87,35 @@
     
 - name: Create a new database with name 'workshop'
   mysql_db:
-    name: workshop
+    name: ansibleworkshop
     state: present
-  tags: update
+  tags: sql
 
 - name: Copy SQL template to server
   template:
-    src: templates/test.sql.j2
-    dest: /tmp/test.sql
-  register: workshopsql
-  tags: update
+    src: templates/linklight.sql.j2
+    dest: /tmp/linklight.sql
+  register: linklightsql
+  tags: sql
   
 - name: Import SQL file into workshop database
   mysql_db:
     state: import
-    name: youtube
-    target: /tmp/test.sql
+    name: ansibleworkshop
+    target: /tmp/linklight.sql
   when: workshopsql.changed
-  tags: update
+  tags: sql
 
 
 - name: reload nginx
   service:
     name: nginx
     state: reloaded
-  tags: update
+  tags: sql
 
 
 - name: restart nginx
   service:
     name: nginx
     state: restarted
-  tags: update
+  tags: sql
