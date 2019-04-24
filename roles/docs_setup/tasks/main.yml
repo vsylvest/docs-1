@@ -54,13 +54,13 @@
 
 - name: Copy users file to server
   copy:
-    src: templates/index.html.j2
+    src: templates/index.html
     dest: /usr/share/nginx/html/register/index.php
   tags: update
 
 - name: Copy insert file to server
   copy:
-    src: templates/insert.php.j2
+    src: templates/insert.php
     dest: /usr/share/nginx/html/register/insert.php
   tags: update
 
