@@ -9,7 +9,7 @@ $link = mysqli_connect("localhost", "root", "", "ansibleworkshop");
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-$sql = " CREATE TABLE IF NOT EXISTS $workshop(   `name` varchar(128) DEFAULT '',   `email` varchar(128) DEFAULT '',   `company` varchar(500) DEFAULT '',          PRIMARY KEY (email) );";
+$sql = "CREATE TABLE IF NOT EXISTS $workshop(   `name` varchar(128) DEFAULT '',   `email` varchar(128) DEFAULT '',   `company` varchar(128) DEFAULT '',          PRIMARY KEY (email) );";
 $sql = "INSERT INTO $workshop (name, email, company ) VALUES
             ('$name', '$email', '$company')";
 if(mysqli_query($link, $sql)){
