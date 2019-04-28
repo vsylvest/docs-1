@@ -1,0 +1,5 @@
+- name: Dump ansibleevents databases to ansibleevents.sql
+  mysql_db:
+    state: dump
+    name: ansibleevents
+    target: /tmp/ansibleevents.sql
